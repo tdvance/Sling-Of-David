@@ -10,6 +10,10 @@ public class StateMachine : MonoBehaviour {
     Dictionary<string, State> states = new Dictionary<string, State>();
     private string currentActiveState = "";
 
+    public State GetActiveState() {
+        return states[currentActiveState];
+    }
+
     public void Register(State state) {
         if (states.ContainsKey(state.stateName)) {
             Debug.LogError("Attempting to register a duplicate state name: " + state.stateName);
