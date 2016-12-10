@@ -1,4 +1,4 @@
-#Sling David
+# Sling David
 
 Game Design Document
 
@@ -30,10 +30,11 @@ The sling transfers drag velocity to rotational energy of the stone.  When the s
 + Options Menu button, the “cog” or settings button goes to *Options Menu* state.
 
 #### Options Menu
-	Allowed actions are are:
+Allowed actions are are:
 + Set music volume
 + Set sound effects volume
 + Return to *Progress Map* state
+
 ####  Start Level
 + Load appropriate level scene
 + Show score (initially 0) and highest score attained for this level, as well as par rating
@@ -44,7 +45,8 @@ The sling transfers drag velocity to rotational energy of the stone.  When the s
 #### Empty Sling
 + Show the sling and the current inventory of rocks
 + After a short delay (1.5 seconds), go to *Get A Rock* state
-####Get A Rock
+
+#### Get A Rock
 + If no enemies remaining, enable Next Level button
 + If there are rocks remaining, remove first rock from inventory and add it to sling
 + Pressing Next Level, if enabled, goes to *End Level* state
@@ -54,6 +56,7 @@ The sling transfers drag velocity to rotational energy of the stone.  When the s
 #### Sling With Rock
 + If sling is dragged, go to *Sling Spinning* state
 + If Next Level button is enabled and pressed, go to *End Level* state
+
 #### Sling Spinning
 + While sling is dragged, increase angular momentum of rock, otherwise decrease angular momentum
 + When drag is released, go to *Rock Deployed* state
@@ -74,6 +77,7 @@ See Rock Physics section for how the rock behaves in the level
 + Unlock next level if not already unlocked
 + Set next level as “current level” 
 + Go to *Progress Map* state
+
 #### Lose Level
 + Show Lose Level animation
 + This level is still “current level”
