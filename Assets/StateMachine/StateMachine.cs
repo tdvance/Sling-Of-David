@@ -10,6 +10,10 @@ public class StateMachine : MonoBehaviour {
     Dictionary<string, State> states = new Dictionary<string, State>();
     private string currentActiveState = "";
 
+    public void ForceTransition(string state) {
+        activeState = state;
+    }
+
     public State GetActiveState() {
         return states[currentActiveState];
     }

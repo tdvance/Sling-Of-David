@@ -73,7 +73,7 @@ public class Sling : MonoBehaviour {
         joint.connectedBody = null;
         StateMachine sm = FindObjectOfType<StateMachine>();
         if (sm) {
-            sm.activeState = "EmptySling";
+            sm.activeState = "RockDeployed";
         }
     }
 
