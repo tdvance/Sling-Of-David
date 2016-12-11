@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Put one of these on every enemy; handles things only enemies do.
+/// </summary>
 public class Enemy : MonoBehaviour {
 
   

@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 
+/// <summary>
+/// Allow user to select a level by pressing a button.
+/// </summary>
 public class LevelSelector : MonoBehaviour {
 
     public int levelNumber;
