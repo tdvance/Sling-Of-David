@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
-
-
+using UnityEngine.Events;
+using System;
+/// <summary>
+/// Unlike the UI button, is in world space with a transform, not a canvas space with a rect transform.
+/// </summary>
 [RequireComponent(typeof(SpriteRenderer), typeof(Collider2D))]
 public class FancyButton : MonoBehaviour {
     public Sprite normalSprite;
@@ -24,9 +27,14 @@ public class FancyButton : MonoBehaviour {
 
     public bool buttonEnabled = true;
 
+    [Serializable]
+    public class ClickEvent : UnityEvent { }
+
+    public ClickEvent OnClick;
+
     private bool hovering = false;
     private bool pressed = false;
-
+    private bool wasPressed = false;
 
     private SpriteRenderer sr;
     // Use this for initialization
@@ -43,14 +51,29 @@ public class FancyButton : MonoBehaviour {
             disabledSprite = pressedSprite;
         }
         sr = GetComponent<SpriteRenderer>();
-
     }
-
 
     // Update is called once per frame
     void Update() {
-        pressed = hovering && CrossPlatformInputManager.GetButton("Fire1");
+        pressed = hovering && CrossPlatformInputManager.GetButtonDown("Fire1");
+        if (pressed && enabled) {
+            wasPressed = true;
+        }
+        if (!hovering) {
+            wasPressed = false;
+        }
         SetButtonState();
+        //if clicked
+        if (wasPressed && CrossPlatformInputManager.GetButtonUp("Fire1")) {
+            if (enabled) {
+                OnClick.Invoke();
+            }
+            wasPressed = false;
+        }
+    }
+
+    public void Test(string arg) {
+        Debug.Log("Clicked for " + arg);
     }
 
     void SetButtonState() {
@@ -74,6 +97,7 @@ public class FancyButton : MonoBehaviour {
             sr.sprite = disabledSprite;
             sr.color = disabledColor;
             transform.localScale = new Vector3(disabledScale, disabledScale, 1);
+            wasPressed = false;
         }
     }
     private void OnMouseEnter() {

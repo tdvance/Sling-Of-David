@@ -6,7 +6,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Responsible for scores, levels.
 /// </summary>
-public class Game : MonoBehaviour {
+public class Level : MonoBehaviour {
     public ScoreDisplay scoreDisplay;
     public ScoreDisplay highScoreDisplay;
     public string HighScoreKeySuffix = "High Score";

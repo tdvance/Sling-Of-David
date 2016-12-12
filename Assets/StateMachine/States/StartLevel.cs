@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class StartLevel : MonoBehaviour {
     public void OnEnterState(State state) {
         Debug.Log("Entering state: " + state.stateName);
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene(FindObjectOfType<GameManager>().currentLevel);
     }
 
     public void OnExitState(State state) {
