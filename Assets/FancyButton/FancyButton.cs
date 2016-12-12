@@ -16,6 +16,7 @@ public class FancyButton : MonoBehaviour {
     public Sprite hoverSprite;
     public Color hoverColor;
     public float hoverScale = 1.25f;
+    public TextMesh hoverText;
 
     public Sprite pressedSprite;
     public Color pressedColor;
@@ -29,16 +30,26 @@ public class FancyButton : MonoBehaviour {
 
     [Serializable]
     public class ClickEvent : UnityEvent { }
-
+        
     public ClickEvent OnClick;
 
     private bool hovering = false;
     private bool pressed = false;
     private bool wasPressed = false;
 
+    private float hoverTextSize = 0;
+
     private SpriteRenderer sr;
     // Use this for initialization
     void Start() {
+        if (!hoverText) {
+            hoverText = GetComponentInChildren<TextMesh>();
+        }
+        if (hoverText) {
+            hoverTextSize = hoverText.characterSize;
+            hoverText.characterSize = 0;
+        }
+
         if (!hoverSprite) {
             hoverSprite = normalSprite;
         }
@@ -77,12 +88,16 @@ public class FancyButton : MonoBehaviour {
     }
 
     void SetButtonState() {
-        if (buttonEnabled) {
+        if (hoverText) {
+            hoverText.characterSize = 0;
+        }
+        if (buttonEnabled) {           
             if (pressed) {
                 sr.sprite = pressedSprite;
                 sr.color = pressedColor;
                 transform.localScale = new Vector3(pressedScale, pressedScale, 1);
             } else if (hovering) {
+                hoverText.characterSize = hoverTextSize;
                 sr.sprite = hoverSprite;
                 sr.color = hoverColor;
                 transform.localScale = new Vector3(hoverScale, hoverScale, 1);
