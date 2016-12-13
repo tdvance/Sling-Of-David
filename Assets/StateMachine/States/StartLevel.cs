@@ -7,6 +7,7 @@ public class StartLevel : MonoBehaviour {
     public void OnEnterState(State state) {
         Debug.Log("Entering state: " + state.stateName);
         SceneManager.LoadScene(FindObjectOfType<GameManager>().currentLevel);
+        FindObjectOfType<GameManager>().CountEnemies();
     }
 
     public void OnExitState(State state) {

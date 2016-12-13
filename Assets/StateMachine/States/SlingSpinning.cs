@@ -5,6 +5,9 @@ using UnityEngine;
 public class SlingSpinning : MonoBehaviour {
     public void OnEnterState(State state) {
         Debug.Log("Entering state: " + state.stateName);
+        if (FindObjectOfType<GameManager>().CountEnemies() == 0) {
+            FindObjectOfType<GameManager>().UnlockNextLevel();
+        }
     }
 
     public void OnExitState(State state) {

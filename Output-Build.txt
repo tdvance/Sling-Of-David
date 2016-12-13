@@ -1,0 +1,5 @@
+﻿1>------ Build started: Project: Sling Of David, Configuration: Debug Any CPU ------
+1>  Sling Of David -> D:\Documents\Repos\Unity3d\Sling Of David\Temp\UnityVS_bin\Debug\Assembly-CSharp.dll
+2>------ Build started: Project: Sling Of David.Editor.Plugins, Configuration: Debug Any CPU ------
+2>  Sling Of David.Editor.Plugins -> D:\Documents\Repos\Unity3d\Sling Of David\Temp\UnityVS_bin\Debug\Assembly-CSharp-Editor-firstpass.dll
+========== Build: 2 succeeded, 0 failed, 1 up-to-date, 0 skipped ==========

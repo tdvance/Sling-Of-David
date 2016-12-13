@@ -8,10 +8,19 @@ using UnityStandardAssets.CrossPlatformInput;
 /// Allow user to select a level by pressing a button.
 /// </summary>
 public class LevelSelector : MonoBehaviour {
+    public GameObject levelsHolder;
 
 
-    public void Select(int which=0) {
-        FindObjectOfType<StateMachine>().GetActiveState().TriggerTransition(which);
+    private void Start() {
+        foreach(Transform t in levelsHolder.transform) {
+            FancyButton b = t.gameObject.GetComponent<FancyButton>();
+            //TODO enable unlocked levels
+        }
+    }
+
+    public void Select(string level) {
+        FindObjectOfType<GameManager>().currentLevel = level;
+        FindObjectOfType<StateMachine>().GetActiveState().TriggerTransition(0);
     }
 
 

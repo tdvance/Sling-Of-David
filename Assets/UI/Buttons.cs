@@ -14,11 +14,11 @@ public class Buttons : MonoBehaviour {
         if (sm) {
             sm.ForceTransition("StartLevel");
         }
-
     }
 
     public void NextLevel() {
         if (sm) {
+            FindObjectOfType<GameManager>().currentLevel = FindObjectOfType<GameManager>().nextLevel;
             sm.ForceTransition("EndLevel");
         }
     }

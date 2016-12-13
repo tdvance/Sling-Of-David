@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class ProgressMap : MonoBehaviour {
 
+
     public void OnEnterState(State state) {
         Debug.Log("Entering state: " + state.stateName);
         SceneManager.LoadScene("Progress");

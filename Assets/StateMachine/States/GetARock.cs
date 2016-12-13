@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GetARock : MonoBehaviour {
-
+    GameManager gm;
     public void OnEnterState(State state) {
         Debug.Log("Entering state: " + state.stateName);
         Sling sling = FindObjectOfType<Sling>();
@@ -15,8 +15,12 @@ public class GetARock : MonoBehaviour {
             sling.GetARock(inventory);
             state.TriggerTransition(0); //Sling With Rock
         }
-
+        gm = FindObjectOfType<GameManager>();
+        if (gm.CountEnemies() == 0) {
+            gm.UnlockNextLevel();
+        }
     }
+
 
     public void OnExitState(State state) {
         Debug.Log("Exiting state: " + state.stateName);
@@ -24,6 +28,9 @@ public class GetARock : MonoBehaviour {
     }
 
     public void OnUpdateState(State state) {
+        if (gm.numberOfEnemies == 0) {
+            gm.UnlockNextLevel();
+        }
         //Debug.Log("Updating state: " + state.stateName);
     }
 
